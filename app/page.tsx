@@ -1,9 +1,9 @@
-"use client";
+"use client"; // allows use to use hooks that do not work in the server
 import SignIn from "@/components/SignIn";
 import styled from "styled-components";
 import { useSession } from "next-auth/react";
 
-
+//styled components for UI
 const HomeDiv = styled.div`
     
     height: 100vh;
@@ -55,14 +55,20 @@ const StyledImg = styled.img`
     
     
 `
+//initializing HomePage function that checks for user auth and displays the necessary component
+// based on that condition
 export default function HomePage() {
     //a React hook that checks if someone is signed in
     const {data: session, status} = useSession();
 
+    // if the user is authenticated display the page with user info
     if (status === "authenticated") {
+        //if the image url exists then store that url else use a default img
+        //needed to use this because adding the url directly to src caused an error because
+        // the url could be a string, null or undefined
         const imgUrl = session?.user?.image || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png";
 
-
+        //component for the user info page
         return(
         <HomeDiv>
             <AuthCard>
@@ -85,7 +91,7 @@ export default function HomePage() {
         )
 
     }
-
+//else return and display the sign in component
     return (
 
         <HomeDiv>

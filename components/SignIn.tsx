@@ -1,8 +1,8 @@
-"use client";
-
+"use client"; // for hooks that are not used in the Server
 import styled from "styled-components";
 import { signIn } from "next-auth/react"
 
+//styled component styling format
 const PageDiv = styled.div`
     margin: 0 auto;
     width: 60vw;
@@ -54,16 +54,17 @@ const StyledH1 = styled.h1`
     font-weight: bold;
     
 `
-
+//initializing sign in component that sends users to the Git OAuth
 export default function SignIn() {
 
     return (
 
         <PageDiv>
             <StyledH1>OAuth Project</StyledH1>
-            {/*use curly brackets and the meme JSON's key to access and
-                        display the values of the name and image*/}
-            <StyledButton onClick={() => signIn("github")}>Sign in with Github
+
+            {/* when the button is clicked it runs the signIn function from next auth and tells
+             it to use GitHub as a provider */}
+            <StyledButton onClick={() => signIn("github")}>Sign in with GitHub
 
             </StyledButton>
         </PageDiv>
