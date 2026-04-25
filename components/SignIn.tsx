@@ -1,16 +1,18 @@
 "use client";
 
 import styled from "styled-components";
-import Link from "next/link";
+import { signIn } from "next-auth/react"
 
 const PageDiv = styled.div`
     margin: 0 auto;
-    width: 40vw;
-    height: 50vh;
-    justify-self: center;
+    width: 60vw;
+    height: 40vh;
+    
     border-radius: 5vw;
-    box-shadow: 10px 10px 5px #36454F;
-    background-color: white;
+    box-shadow: 10px 10px 5px #003049;
+    background-color: #4a4e69;
+    
+    align-content: center;
     
     text-align: center;
     
@@ -20,13 +22,19 @@ const PageDiv = styled.div`
 `
 
 
-const StyledButton = styled.div`
+const StyledButton = styled.button`
     background-color: #f72585;
+    
     color: white;
-    width: 20vw;
-    height: 5vw;
+    width: fit-content;
+    padding: 1vh;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    height: fit-content;
     border-radius: 2vw;
-    box-shadow: 5px 2px 2px #36454F;
+    box-shadow: 5px 2px 2px #003049;
     font-size: calc(10px + 1.5vw);
     
    
@@ -37,16 +45,26 @@ const StyledButton = styled.div`
         color: #f72585;
     }
 `
+const StyledH1 = styled.h1`
+    color: white;
+    font-size: calc(20px + 1.5vw);
+    text-align: center;
+    margin-bottom: 4vh;
+    
+    font-weight: bold;
+    
+`
 
 export default function SignIn() {
 
     return (
 
         <PageDiv>
+            <StyledH1>OAuth Project</StyledH1>
             {/*use curly brackets and the meme JSON's key to access and
                         display the values of the name and image*/}
-            <StyledButton>
-            <Link href={`/api/auth/signin`}>SignIn</Link>
+            <StyledButton onClick={() => signIn("github")}>Sign in with Github
+
             </StyledButton>
         </PageDiv>
 
