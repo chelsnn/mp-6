@@ -50,11 +50,8 @@ const StyledImg = styled.img`
     align-self: center;
     justify-self: center;
  
-   
-    
-  
     border-radius: 50%;
-    width: 30%;
+    width: 10vh;
     
     
 `
@@ -63,11 +60,18 @@ export default function HomePage() {
     const {data: session, status} = useSession();
 
     if (status === "authenticated") {
+        const imgUrl = session?.user?.image || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png";
+
 
         return(
         <HomeDiv>
             <AuthCard>
-                <StyledImg src={session?.user?.image} alt="user's github profile picture"/>
+
+
+                <StyledImg src={imgUrl} alt="user's github profile picture"/>
+
+
+
                 <StyledP>
                     Signed in as {session?.user?.name}
 
